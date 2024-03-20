@@ -5,9 +5,16 @@ import TextField from '@mui/material/TextField';
 
 export default function FormPropsTextFields({ password, onPasswordChange }) {
 
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onPasswordChange(); // Llama a la función pasada por prop cuando el formulario se "envía"
+  };
+
   return (
     <Box
-      
+      component='form'
+      onSubmit={handleSubmit}
       sx={{
         '& .MuiTextField-root': { m: 1, width: '25ch' },
       }}

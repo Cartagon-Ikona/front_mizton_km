@@ -8,8 +8,11 @@ import {  Stack } from '@mui/material';
 import SendButton from './SendButton';
 import { getPass } from './mondayFunctions'
 import PasstextError from './PasstextError';
+import DataProvider from '../context/DataProvider';
 
 export default function ServerModal({setLoging}) {
+
+  const pass = React.useContext(DataProvider);
   
   const [InputPassword, setInputPassword] = React.useState('');
   const [errorPass, setErrorPass] = React.useState();
@@ -24,15 +27,15 @@ export default function ServerModal({setLoging}) {
    
     console.log('entro en handleSend en logging al pulsar el boton');
     
-    const pwd = await getPass(); // Espera a que la promesa se resuelva y asigna el resultado a pwd
-    console.log('password obtenida', pwd);
+    // const pwd = await getPass(); // Espera a que la promesa se resuelva y asigna el resultado a pwd
+    // console.log('password obtenida', pwd);
   
-    const pwdResponse = pwd['pasword'];
-    console.log('password esperada', pwdResponse);
-    console.log('password introducida', InputPassword); // Usa el valor actual de InputPassword para la comparación
+    // const pwdResponse = pwd['pasword'];
+    // console.log('password esperada', pwdResponse);
+    // console.log('password introducida', InputPassword); // Usa el valor actual de InputPassword para la comparación
     
     // Usa directamente el valor introducido para comparar, en lugar del estado que acabas de actualizar.
-    if (InputPassword === pwdResponse) {
+    if (InputPassword === pass) {
       console.log('entro en if');
       setErrorPass(false);
       setLoging(true);
