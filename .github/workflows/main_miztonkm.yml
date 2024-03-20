@@ -58,5 +58,5 @@ jobs:
         with:
           app-name: 'miztonKm'
           slot-name: 'Production'
-          package: .
+          package: .'./build'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1EC7A1B47F594E86AB38BCEB3C9A55E7 }}
