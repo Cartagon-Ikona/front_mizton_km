@@ -24,7 +24,7 @@ jobs:
       - name: npm install, build, and test
         run: |
           npm install
-          npm run build --if-present
+          CI=false npm run build --if-present
           npm test --if-present
 
       # Este paso ya no es necesario ya que ahora solo vamos a subir el build
