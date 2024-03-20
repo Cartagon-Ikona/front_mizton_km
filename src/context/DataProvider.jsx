@@ -49,7 +49,7 @@ const DataProvider = ({ children }) => {
   const [loading, setLoading] = useState(true); // Nuevo estado para manejar la carga
 
   const url =
-    "https://getmiztondata.azurewebsites.net/api/getMondayData?code=f9u-Sq2-C-_hooTqZn8xP2XxvQd1oKPeg-Y0xyX76BKxAzFuwSkTZA==";
+    "https://getmiztondata.azurewebsites.net/api/getMondayData?code=jPXO96kKzNnpzL9bMHylR1r5ojtq3dY2lz2q_lG_QlGpAzFuutzrRQ==";
 
   const fetchItems = async () => {
     setLoading(true); // Inicia la carga
@@ -108,7 +108,7 @@ const DataProvider = ({ children }) => {
     return <div>Cargando datos...</div>; // Puedes personalizar este componente de carga como prefieras
   }
 
-  return <DataContext.Provider value={items}>{children}</DataContext.Provider>;
+  return <DataContext.Provider items={items} pass = {pass}>{children}</DataContext.Provider>;
 };
 
 export default DataProvider;
