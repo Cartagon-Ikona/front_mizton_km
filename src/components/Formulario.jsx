@@ -102,7 +102,7 @@ import {obtenerItems,cambiarKm} from "./mondayFunctions";
 export default function BasicTextFields() {
   const [placa, setPlaca] = useState('');
   const [kilometros, setKilometros] = useState('');
-  const [nombresDeItems, setNombresDeItems] = useState([]);
+  // const [nombresDeItems, setNombresDeItems] = useState([]);
   const [error, setError] = useState(''); // Estado para mensajes de error
   const [items, setItems] = useState([]); 
 

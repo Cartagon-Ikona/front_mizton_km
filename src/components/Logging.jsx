@@ -1,10 +1,10 @@
 import * as React from 'react';
-import Modal from '@mui/material/Modal';
+// import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import mizton from '../img/mizton.png';
 import PassText from './PassText';
-import { Button, Stack } from '@mui/material';
+import {  Stack } from '@mui/material';
 import SendButton from './SendButton';
 import { getPass } from './mondayFunctions'
 import PasstextError from './PasstextError';
