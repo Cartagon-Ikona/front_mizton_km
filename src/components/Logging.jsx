@@ -6,12 +6,13 @@ import mizton from "../img/mizton.png";
 import PassText from "./PassText";
 import { Stack } from "@mui/material";
 import SendButton from "./SendButton";
-import { getPass } from "./mondayFunctions";
+// import { getPass } from "./mondayFunctions";
 import PasstextError from "./PasstextError";
-import DataProvider from "../context/DataProvider";
+// import DataProvider from "../context/DataProvider";
+import DataContext from "../context/DataContext";
 
 export default function ServerModal({ setLoging }) {
-  const pass = React.useContext(DataProvider);
+  const pass = React.useContext(DataContext);
 
   const [InputPassword, setInputPassword] = React.useState("");
   const [errorPass, setErrorPass] = React.useState();
