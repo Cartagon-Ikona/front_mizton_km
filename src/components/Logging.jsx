@@ -36,7 +36,7 @@ export default function ServerModal({setLoging}) {
     // console.log('password introducida', InputPassword); // Usa el valor actual de InputPassword para la comparación
     
     // Usa directamente el valor introducido para comparar, en lugar del estado que acabas de actualizar.
-    if (InputPassword === pass) {
+    if (InputPassword === pass['pasword']) {
       console.log('entro en if');
       setErrorPass(false);
       setLoging(true);
