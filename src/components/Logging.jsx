@@ -26,6 +26,7 @@ export default function ServerModal({setLoging}) {
     
    
     console.log('entro en handleSend en logging al pulsar el boton');
+    console.log('password esperada', pass);
     
     // const pwd = await getPass(); // Espera a que la promesa se resuelva y asigna el resultado a pwd
     // console.log('password obtenida', pwd);
