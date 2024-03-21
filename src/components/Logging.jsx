@@ -1,14 +1,11 @@
 import * as React from "react";
-// import Modal from '@mui/material/Modal';
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import mizton from "../img/mizton.png";
 import PassText from "./PassText";
 import { Stack } from "@mui/material";
 import SendButton from "./SendButton";
-// import { getPass } from "./mondayFunctions";
 import PasstextError from "./PasstextError";
-// import DataProvider from "../context/DataProvider";
 import DataContext from "../context/DataContext";
 
 export default function ServerModal({ setLoging }) {
@@ -26,14 +23,6 @@ export default function ServerModal({ setLoging }) {
     console.log("entro en handleSend en logging al pulsar el boton");
     console.log("password esperada", context.pass);
 
-    // const pwd = await getPass(); // Espera a que la promesa se resuelva y asigna el resultado a pwd
-    // console.log('password obtenida', pwd);
-
-    // const pwdResponse = pwd['pasword'];
-    // console.log('password esperada', pwdResponse);
-    // console.log('password introducida', InputPassword); // Usa el valor actual de InputPassword para la comparación
-
-    // Usa directamente el valor introducido para comparar, en lugar del estado que acabas de actualizar.
     if (InputPassword === context.pass) {
       console.log("entro en if");
       setErrorPass(false);
@@ -85,10 +74,6 @@ export default function ServerModal({ setLoging }) {
           )}
           <SendButton handleSend={handleSend} />
         </Stack>
-
-        {/* <Typography id="server-modal-description" sx={{ pt: 2 }}>
-          If you disable JavaScript, you will still see me.
-        </Typography> */}
       </Box>
     </Box>
   );

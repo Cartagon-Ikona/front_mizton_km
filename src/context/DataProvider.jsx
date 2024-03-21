@@ -9,8 +9,7 @@ const DataProvider = ({ children }) => {
   const [pass, setPass] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const url =
-    "https://getmiztondata.azurewebsites.net/api/getMondayData";
+  const url = "https://getmiztondata.azurewebsites.net/api/getMondayData";
 
   const fetchData = async () => {
     // Combina ambos fetch en un array de promesas
@@ -49,10 +48,7 @@ const DataProvider = ({ children }) => {
       console.log("passData = ", passData);
 
       // Actualiza los estados con los datos obtenidos
-      console.log(
-        "itemsData.data.boards[0].items_page.items",
-        itemsData
-      );
+      console.log("itemsData.data.boards[0].items_page.items", itemsData);
       setItems(itemsData);
       console.log("passData", passData["pasword"]);
       setPass(passData["pasword"]); // Asegúrate de que la clave aquí coincide con la estructura de tu objeto JSON
@@ -78,18 +74,18 @@ const DataProvider = ({ children }) => {
         minHeight="100vh"
       >
         <Box
-        sx={{
-          display: "flex", // Añade esto
-          flexDirection: "column", // Cambia la dirección del flexbox a columna
-          justifyContent: "center", // Centra los elementos verticalmente
-          alignItems: "center", // Centra los elementos horizontalmente
-          position: "absolute",
-          bgcolor: "background.paper",
-          border: "2px solid #000",
-          boxShadow: (theme) => theme.shadows[5],
-          p: 4,
-        }}
-      >
+          sx={{
+            display: "flex", // Añade esto
+            flexDirection: "column", // Cambia la dirección del flexbox a columna
+            justifyContent: "center", // Centra los elementos verticalmente
+            alignItems: "center", // Centra los elementos horizontalmente
+            position: "absolute",
+            bgcolor: "background.paper",
+            border: "2px solid #000",
+            boxShadow: (theme) => theme.shadows[5],
+            p: 4,
+          }}
+        >
           <img
             src={mizton}
             alt="Descripción de la imagen"
@@ -109,77 +105,3 @@ const DataProvider = ({ children }) => {
 };
 
 export default DataProvider;
-
-// import React, { useState, useEffect } from "react";
-// import DataContext from "./DataContext";
-
-// const DataProvider = ({ children }) => {
-//   const [items, setItems] = useState(null);
-//   const [pass, setPass] = useState(null);
-//   const [loading, setLoading] = useState(true); // Nuevo estado para manejar la carga
-
-//   const url =
-//     "https://getmiztondata.azurewebsites.net/api/getMondayData?code=CkBipcFFq5sDG6O_OhiiZ5UFDP8cCzG8FPTT2I1FgAeQAzFu_VY4Ww==";
-
-//   const fetchItems = async () => {
-//     setLoading(true); // Inicia la carga
-//     try {
-//       const response = await fetch(url, {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({
-//           get_items:
-//             "query{boards(ids: 6097786561) {items_page(limit: 25){cursor items{id name} }}}",
-//         }),
-//       });
-
-//       if (!response.ok) throw new Error("La petición falló");
-//       console.log("contentType");
-//       console.log("response:", response);
-//       const data = await response.json();
-//       setItems(data.data.boards[0].items_page.items); // Actualiza los datos
-//       setLoading(false); // Finaliza la carga
-//     } catch (error) {
-//       console.error("Error en la petición:", error);
-//       // setLoading(false); // Asegúrate de manejar el estado de carga incluso en caso de error
-//     }
-//   };
-
-//   const fetchpass = async () => {
-//     setLoading(true); // Inicia la carga
-//     try {
-//       const response = await fetch(url, {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({
-//           get_pass:"get_pass",
-//         }),
-//       });
-
-//       if (!response.ok) throw new Error("La petición falló");
-//       console.log("contentType");
-//       console.log("response:", response);
-//       const data = await response.json();
-//       console.log('data pass',data)
-//       console.log('data["pasword"]',data['pasword'])
-//       setPass(data['pasword']); // Actualiza los datos
-//       setLoading(false); // Finaliza la carga
-//     } catch (error) {
-//       console.error("Error en la petición:", error);
-//       // setLoading(false); // Asegúrate de manejar el estado de carga incluso en caso de error
-//     }
-//   };
-
-//   useEffect(() => {
-//     fetchItems();
-//     fetchpass();
-//   }, []);
-
-//   if (loading) {
-//     return <div>Cargando datos...</div>; // Puedes personalizar este componente de carga como prefieras
-//   }
-
-//   return <DataContext.Provider items={items} pass = {pass}>{children}</DataContext.Provider>;
-// };
-
-// export default DataProvider;
