@@ -13,7 +13,7 @@ export default function ValidationTextFields({ password, onPasswordChange }) {
   return (
     
     <Box
-    component='form'
+    // component='form'
     // onSubmit={handleSubmit}
       sx={{
         '& .MuiTextField-root': { m: 1, width: '25ch' },
