@@ -3,11 +3,22 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
-export default function FormPropsTextFields({ password, onPasswordChange }) {
+export default function FormPropsTextFields({ password, onPasswordChange, handleSend }) {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    
+    console.log("handlsubmit")
+    handleSend()
+  };
+
+
+
   return (
+
+    
     <Box
-      // component='form'
-      // onSubmit={handleSubmit}
+      component='form'
+      onSubmit={handleSubmit}
       sx={{
         "& .MuiTextField-root": { m: 1, width: "25ch" },
       }}

@@ -65,11 +65,13 @@ export default function ServerModal({ setLoging }) {
             <PasstextError
               password={InputPassword}
               onPasswordChange={handlePwdChange}
+              handleSend = {handleSend}
             />
           ) : (
             <PassText
               password={InputPassword}
               onPasswordChange={handlePwdChange}
+              handleSend = {handleSend}
             />
           )}
           <SendButton handleSend={handleSend} />
