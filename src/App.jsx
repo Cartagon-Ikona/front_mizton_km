@@ -26,21 +26,21 @@ function App() {
   //   if (login=) {
   //     setPasword(true);
   //   }
-  // }, [login])
+  // // }, [login])
 
-  useEffect(() => {
-    console.log(`Estado de login actualizado: ${login}`);
-  }, [login]);
+  // useEffect(() => {
+  //   console.log(`Estado de login actualizado: ${login}`);
+  // }, [login]);
 
-  useEffect(() => {
-    if (login) {
-      console.log(
-        "El usuario se ha autenticado, puedes realizar acciones post-login aquí"
-      );
-      // Aquí puedes colocar cualquier código que necesites ejecutar después del login.
-      // Por ejemplo, redirigir al usuario a otra página o cargar datos específicos del usuario.
-    }
-  }, [login]);
+  // useEffect(() => {
+  //   if (login) {
+  //     console.log(
+  //       "El usuario se ha autenticado, puedes realizar acciones post-login aquí"
+  //     );
+  //     // Aquí puedes colocar cualquier código que necesites ejecutar después del login.
+  //     // Por ejemplo, redirigir al usuario a otra página o cargar datos específicos del usuario.
+  //   }
+  // }, [login]);
 
   return (
     <DataProvider>
