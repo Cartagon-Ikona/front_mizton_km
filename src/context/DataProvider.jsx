@@ -10,7 +10,7 @@ const DataProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const url =
-    "https://getmiztondata.azurewebsites.net/api/getMondayData?code=maNLzFXYFlfeTXT4CdLVrWp7kKVPhdCRgv1qABIlknSNAzFuxgyJEQ==";
+    "https://getmiztondata.azurewebsites.net/api/getMondayData?code=A5jx_MQrCm5lWS_Ye8JH_45__y_nVn7kXZYZw_bz8yRhAzFuKqT-aw==";
 
   const fetchData = async () => {
     // Combina ambos fetch en un array de promesas
