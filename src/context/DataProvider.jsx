@@ -92,7 +92,7 @@ const DataProvider = ({ children }) => {
       console.log("response:", response);
       const data = await response.json();
       console.log('data pass',data)
-      setPass(data); // Actualiza los datos
+      setPass(data['pasword']); // Actualiza los datos
       setLoading(false); // Finaliza la carga
     } catch (error) {
       console.error("Error en la petición:", error);

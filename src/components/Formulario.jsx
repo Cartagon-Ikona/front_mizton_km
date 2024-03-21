@@ -1,4 +1,3 @@
-
 // import * as React from "react";
 // import Box from "@mui/material/Box";
 // import TextField from "@mui/material/TextField";
@@ -27,7 +26,6 @@
 //     event.preventDefault();
 //     procesarDatos(placa, kilometros);
 //   };
-  
 
 //   useEffect(() => {
 //     const url = 'https://appfunction-funciones.azurewebsites.net/api/funciones?code=CWenVyUQLn_UDqagBnoDThEXlLuG-wh0yHSnZ-tBicTzAzFuzyRTKA==';
@@ -64,7 +62,7 @@
 
 //   return (
 //     nombresDeItems.length > 0 ?(
-      
+
 //       <Box
 //       component="form"
 //       onSubmit={handleSubmit}
@@ -85,26 +83,24 @@
 //     ):(
 //       <h1>Cargando...</h1>
 //   )
-    
+
 //   );
 // }
-
 
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import Button from '@mui/material/Button';
-import Alert from '@mui/material/Alert'; // Asegúrate de tener @mui/material instalado
-import {obtenerItems,cambiarKm} from "./mondayFunctions";
-
-
+import Button from "@mui/material/Button";
+import Alert from "@mui/material/Alert"; // Asegúrate de tener @mui/material instalado
+import { obtenerItems, cambiarKm } from "./mondayFunctions";
+import mizton from "../img/mizton.png";
 
 export default function BasicTextFields() {
-  const [placa, setPlaca] = useState('');
-  const [kilometros, setKilometros] = useState('');
+  const [placa, setPlaca] = useState("");
+  const [kilometros, setKilometros] = useState("");
   // const [nombresDeItems, setNombresDeItems] = useState([]);
-  const [error, setError] = useState(''); // Estado para mensajes de error
-  const [items, setItems] = useState([]); 
+  const [error, setError] = useState(""); // Estado para mensajes de error
+  const [items, setItems] = useState([]);
 
   const handlePlacaChange = (event) => {
     setPlaca(event.target.value);
@@ -115,58 +111,96 @@ export default function BasicTextFields() {
   };
 
   const procesarDatos = (placa, kilometros) => {
-    console.log(`Procesando datos - Placa: ${placa}, Kilómetros: ${kilometros}`);
+    console.log(
+      `Procesando datos - Placa: ${placa}, Kilómetros: ${kilometros}`
+    );
     // Aquí puedes agregar la lógica que necesitas ejecutar si la placa está en la lista
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const itemEncontrado = items.find(item => item.name === placa);
-    
+    const itemEncontrado = items.find((item) => item.name === placa);
+
     if (itemEncontrado) {
       procesarDatos(placa, kilometros);
-      setError(''); // Limpia el mensaje de error si todo va bien
+      setError(""); // Limpia el mensaje de error si todo va bien
       cambiarKm(itemEncontrado.id, kilometros); // Llama a la función cambiarKm con los parámetros adecuados
-      setPlaca('');
-      setKilometros('');
+      setPlaca("");
+      setKilometros("");
     } else {
-      setError('La placa introducida no está en la lista de ítems.');
+      setError("La placa introducida no está en la lista de ítems.");
     }
   };
 
   useEffect(() => {
     const cargarItems = async () => {
-        const itemsObtenidos = await obtenerItems();
-        setItems(itemsObtenidos);
+      const itemsObtenidos = await obtenerItems();
+      setItems(itemsObtenidos);
     };
 
     cargarItems();
-}, []);
+  }, []);
 
   return (
-    <>
-      {error && <Alert severity="error">{error}</Alert>} {/* Muestra el mensaje de error si existe */}
-      {items.length > 0 ? (
-        <Box
-          component="form"
-          onSubmit={handleSubmit}
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            '& > :not(style)': { m: 1, width: '25ch' },
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <TextField id="placa" label="Placa" variant="outlined" value={placa} onChange={handlePlacaChange} />
-          <TextField id="km" label="Kilómetros" variant="outlined" value={kilometros} onChange={handleKilometrosChange} />
-          <Button type="submit" variant="contained">Enviar</Button>
-        </Box>
-      ) : (
-        <h1>Cargando...</h1>
-      )}
-    </>
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      minHeight="100vh"
+    >
+      <Box
+        sx={{
+          position: "absolute",
+          // width: 400,
+          bgcolor: "background.paper",
+          border: "2px solid #000",
+          boxShadow: (theme) => theme.shadows[5],
+          p: 4,
+        }}
+      >
+        <img
+          src={mizton}
+          alt="Descripción de la imagen"
+          style={{ maxWidth: "100%", height: "auto" }}
+        />
+        {error && <Alert severity="error">{error}</Alert>}{" "}
+        {/* Muestra el mensaje de error si existe */}
+        {items.length > 0 ? (
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              "& > :not(style)": { m: 1, width: "25ch" },
+            }}
+            noValidate
+            autoComplete="off"
+          >
+            <TextField
+              id="placa"
+              label="Placa"
+              variant="outlined"
+              value={placa}
+              onChange={handlePlacaChange}
+            />
+            <TextField
+              id="km"
+              label="Kilómetros"
+              variant="outlined"
+              value={kilometros}
+              onChange={handleKilometrosChange}
+            />
+            <Button type="submit" variant="contained">
+              Enviar
+            </Button>
+          </Box>
+        ) : (
+          <h1>Cargando...</h1>
+        )}
+      </Box>
+    </Box>
   );
 }
