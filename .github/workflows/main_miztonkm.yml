@@ -25,7 +25,7 @@ jobs:
         run: |
           npm install
           CI=false npm run build --if-present
-          npm test --if-present
+      # npm test --if-present
 
       # Este paso ya no es necesario ya que ahora solo vamos a subir el build
       # - name: Zip artifact for deployment

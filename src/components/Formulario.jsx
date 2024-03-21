@@ -95,13 +95,17 @@ import Alert from "@mui/material/Alert"; // Asegúrate de tener @mui/material in
 import { obtenerItems, cambiarKm } from "./mondayFunctions";
 import mizton from "../img/mizton.png";
 import CircularProgress from '@mui/material/CircularProgress';
+import DataContext from "../context/DataContext";
 
 export default function BasicTextFields() {
+  const context = React.useContext(DataContext);
+  const items = context.items;
+
   const [placa, setPlaca] = useState("");
   const [kilometros, setKilometros] = useState("");
   // const [nombresDeItems, setNombresDeItems] = useState([]);
   const [error, setError] = useState(""); // Estado para mensajes de error
-  const [items, setItems] = useState([]);
+  // const [items, setItems] = useState([]);
 
   const handlePlacaChange = (event) => {
     setPlaca(event.target.value);
@@ -133,14 +137,14 @@ export default function BasicTextFields() {
     }
   };
 
-  useEffect(() => {
-    const cargarItems = async () => {
-      const itemsObtenidos = await obtenerItems();
-      setItems(itemsObtenidos);
-    };
+  // useEffect(() => {
+  //   const cargarItems = async () => {
+  //     const itemsObtenidos = await obtenerItems();
+  //     setItems(itemsObtenidos);
+  //   };
 
-    cargarItems();
-  }, []);
+  //   cargarItems();
+  // }, []);
 
   return (
     <Box
