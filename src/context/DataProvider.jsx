@@ -10,7 +10,7 @@ const DataProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const url =
-    "https://getmiztondata.azurewebsites.net/api/getMondayData?code=A5jx_MQrCm5lWS_Ye8JH_45__y_nVn7kXZYZw_bz8yRhAzFuKqT-aw==";
+    "https://getmiztondata.azurewebsites.net/api/getMondayData";
 
   const fetchData = async () => {
     // Combina ambos fetch en un array de promesas
@@ -34,6 +34,9 @@ const DataProvider = ({ children }) => {
     try {
       // Espera a que ambas promesas se resuelvan
       const responses = await Promise.all(fetchPromises);
+      console.log("responses = ", responses);
+      console.log("responses[0] = ", responses[0]);
+      console.log("responses[1] = ", responses[1]);
 
       // Verifica si alguna de las respuestas no fue exitosa
       if (!responses[0].ok || !responses[1].ok)

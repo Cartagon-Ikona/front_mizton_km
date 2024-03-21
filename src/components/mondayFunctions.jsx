@@ -2,7 +2,7 @@
 
 
 export const obtenerItems = async () => {
-    const url = 'https://appfunction-funciones.azurewebsites.net/api/funciones?code=CWenVyUQLn_UDqagBnoDThEXlLuG-wh0yHSnZ-tBicTzAzFuzyRTKA==';
+    const url = 'https://getmiztondata.azurewebsites.net/api/getMondayData';
     const datos = {
         'monday_request': 'query{boards(ids: 6097786561) {items_page(limit: 25){cursor items{id name} }}}'
     };
@@ -26,7 +26,7 @@ export const obtenerItems = async () => {
 
 
 export const cambiarKm = async (itemId, value) => {
-    const url = 'https://getmiztondata.azurewebsites.net/api/getMondayData?code=A5jx_MQrCm5lWS_Ye8JH_45__y_nVn7kXZYZw_bz8yRhAzFuKqT-aw==';
+    const url = 'https://getmiztondata.azurewebsites.net/api/getMondayData';
     const datos = {
         'monday_request': `mutation {change_column_value(board_id: 6097786561, item_id: ${itemId}, column_id: "numbers", value: "${value}") {id }}`
     };
@@ -50,7 +50,7 @@ export const cambiarKm = async (itemId, value) => {
 
 
 export const getPass = async () => {
-    const url = 'https://appfunction-funciones.azurewebsites.net/api/funciones?code=CWenVyUQLn_UDqagBnoDThEXlLuG-wh0yHSnZ-tBicTzAzFuzyRTKA==';
+    const url = 'https://getmiztondata.azurewebsites.net/api/getMondayData';
     
     const datos = {
     'get_pass': 'get_pass'
