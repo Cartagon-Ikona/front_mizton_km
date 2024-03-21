@@ -49,7 +49,7 @@ const DataProvider = ({ children }) => {
   const [loading, setLoading] = useState(true); // Nuevo estado para manejar la carga
 
   const url =
-    "https://getmiztondata.azurewebsites.net/api/getMondayData?code=jPXO96kKzNnpzL9bMHylR1r5ojtq3dY2lz2q_lG_QlGpAzFuutzrRQ==";
+    "https://getmiztondata.azurewebsites.net/api/getMondayData?code=CkBipcFFq5sDG6O_OhiiZ5UFDP8cCzG8FPTT2I1FgAeQAzFu_VY4Ww==";
 
   const fetchItems = async () => {
     setLoading(true); // Inicia la carga
