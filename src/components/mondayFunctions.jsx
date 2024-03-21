@@ -26,7 +26,7 @@ export const obtenerItems = async () => {
 
 
 export const cambiarKm = async (itemId, value) => {
-    const url = 'https://appfunction-funciones.azurewebsites.net/api/funciones?code=CWenVyUQLn_UDqagBnoDThEXlLuG-wh0yHSnZ-tBicTzAzFuzyRTKA==';
+    const url = 'https://getmiztondata.azurewebsites.net/api/getMondayData?code=maNLzFXYFlfeTXT4CdLVrWp7kKVPhdCRgv1qABIlknSNAzFuxgyJEQ==';
     const datos = {
         'monday_request': `mutation {change_column_value(board_id: 6097786561, item_id: ${itemId}, column_id: "numbers", value: "${value}") {id }}`
     };

@@ -96,6 +96,7 @@ import { obtenerItems, cambiarKm } from "./mondayFunctions";
 import mizton from "../img/mizton.png";
 import CircularProgress from '@mui/material/CircularProgress';
 import DataContext from "../context/DataContext";
+import { Typography } from "@mui/material";
 
 export default function BasicTextFields() {
   const context = React.useContext(DataContext);
@@ -105,7 +106,7 @@ export default function BasicTextFields() {
   const [kilometros, setKilometros] = useState("");
   // const [nombresDeItems, setNombresDeItems] = useState([]);
   const [error, setError] = useState(""); // Estado para mensajes de error
-  // const [items, setItems] = useState([]);
+ const [cambioOk, setCambioOk] = useState(false);
 
   const handlePlacaChange = (event) => {
     setPlaca(event.target.value);
@@ -122,20 +123,84 @@ export default function BasicTextFields() {
     // Aquí puedes agregar la lógica que necesitas ejecutar si la placa está en la lista
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const itemEncontrado = items.find((item) => item.name === placa);
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   const itemEncontrado = items.find((item) => item.name === placa);
 
+  //   if (itemEncontrado) {
+  //     procesarDatos(placa, kilometros);
+  //     setError(""); // Limpia el mensaje de error si todo va bien
+  //     cambiarKm(itemEncontrado.id, kilometros); // Llama a la función cambiarKm con los parámetros adecuados
+  //     setPlaca("");
+  //     setKilometros("");
+  //   } else {
+  //     setError("La placa introducida no está en la lista de ítems.");
+  //   }
+  // };
+
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const kilometrosNum = Number(kilometros);
+  
+    if (isNaN(kilometrosNum)) {
+      setError("Por favor, introduce un número válido de kilómetros.");
+      return;
+    }
+  
+    const itemEncontrado = items.find((item) => item.name === placa);
+  
     if (itemEncontrado) {
-      procesarDatos(placa, kilometros);
-      setError(""); // Limpia el mensaje de error si todo va bien
-      cambiarKm(itemEncontrado.id, kilometros); // Llama a la función cambiarKm con los parámetros adecuados
-      setPlaca("");
-      setKilometros("");
+      const kmActual = Number(itemEncontrado.value);
+      console.log('kmActual = ', kmActual);
+  
+      if (kilometrosNum > kmActual + 1000) {
+        setError("Los kilómetros introducidos no pueden superar en 1000 a los actuales.");
+        return;
+      }
+
+      if (kilometrosNum < kmActual ) {
+        setError("Los kilómetros introducidos no pueden ser inferiores a los actuales.");
+        return;
+      }
+  
+      procesarDatos(placa, kilometrosNum);
+      setError("");
+  
+      try {
+        const cambio = await cambiarKm(itemEncontrado.id, kilometrosNum);
+        console.log('cambio = ', cambio);
+  
+        // Aquí verificas si la respuesta contiene el dato esperado
+        if (cambio['data'] && cambio['data']['change_column_value']) {
+          console.log('Cambio realizado con éxito');
+          setCambioOk(true); // Actualiza el estado para reflejar el éxito del cambio
+          setPlaca("");
+          setKilometros("");
+        } else {
+          // Si no existe 'change_column_value' en la respuesta, maneja como un error
+          console.error("Fallo en el cambio.");
+          setError("Hubo un fallo en el cambio de kilómetros.");
+          setCambioOk(false); // Opcional, dependiendo de si quieres manejar este estado en caso de error
+          setPlaca("");
+          setKilometros("");
+        }
+      } catch (error) {
+        console.error("Error al cambiar los km:", error);
+        setError("Hubo un error al procesar el cambio de kilómetros.");
+        setCambioOk(false); // Actualiza el estado para reflejar el fallo en el cambio
+        setPlaca("");
+          setKilometros("");
+      }
     } else {
       setError("La placa introducida no está en la lista de ítems.");
+      setPlaca("");
+          setKilometros("");
     }
   };
+
+
+
 
   // useEffect(() => {
   //   const cargarItems = async () => {
@@ -147,6 +212,73 @@ export default function BasicTextFields() {
   // }, []);
 
   return (
+  //   <Box
+  //     display="flex"
+  //     justifyContent="center"
+  //     alignItems="center"
+  //     minHeight="100vh"
+  //   >
+  //     <Box
+  //       sx={{
+  //         position: "absolute",
+  //         // width: 400,
+  //         bgcolor: "background.paper",
+  //         border: "2px solid #000",
+  //         boxShadow: (theme) => theme.shadows[5],
+  //         p: 4,
+  //       }}
+  //     >
+  //       <img
+  //         src={mizton}
+  //         alt="Descripción de la imagen"
+  //         style={{ maxWidth: "100%", height: "auto" }}
+  //       />
+  //       {error && <Alert severity="error">{error}</Alert>}{" "}
+  //       {/* Muestra el mensaje de error si existe */}
+  //       {items.length > 0 ? (
+  //         <Box
+  //           component="form"
+  //           onSubmit={handleSubmit}
+  //           sx={{
+  //             display: "flex",
+  //             flexDirection: "column",
+  //             alignItems: "center",
+  //             justifyContent: "center",
+  //             "& > :not(style)": { m: 1, width: "25ch" },
+  //           }}
+  //           noValidate
+  //           autoComplete="off"
+  //         >
+  //           <TextField
+  //             id="placa"
+  //             label="Placa"
+  //             variant="outlined"
+  //             value={placa}
+  //             onChange={handlePlacaChange}
+  //           />
+  //           <TextField
+  //             id="km"
+  //             label="Kilómetros"
+  //             variant="outlined"
+  //             value={kilometros}
+  //             onChange={handleKilometrosChange}
+  //           />
+  //           <Button type="submit" variant="contained">
+  //             Enviar
+  //           </Button>
+  //         </Box>
+  //       ) : (
+  //         <Box sx={{ display: 'flex' }}>
+  //     <CircularProgress />
+  //   </Box>
+  //       )}
+  //     </Box>
+  //   </Box>
+  // );
+
+
+
+
     <Box
       display="flex"
       justifyContent="center"
@@ -156,7 +288,6 @@ export default function BasicTextFields() {
       <Box
         sx={{
           position: "absolute",
-          // width: 400,
           bgcolor: "background.paper",
           border: "2px solid #000",
           boxShadow: (theme) => theme.shadows[5],
@@ -168,9 +299,14 @@ export default function BasicTextFields() {
           alt="Descripción de la imagen"
           style={{ maxWidth: "100%", height: "auto" }}
         />
-        {error && <Alert severity="error">{error}</Alert>}{" "}
-        {/* Muestra el mensaje de error si existe */}
-        {items.length > 0 ? (
+        {cambioOk === false && error && <Alert severity="error">{error}</Alert>}
+        {cambioOk === true ? (
+          // Si cambioOk es true, muestra un texto de éxito
+          <Typography variant="h5" component="h2" sx={{ mt: 2 }}>
+            Cambio realizado con éxito.
+          </Typography>
+        ) : items.length > 0 ? (
+          // Si cambioOk es false o null y hay items, muestra el formulario
           <Box
             component="form"
             onSubmit={handleSubmit}
@@ -203,11 +339,15 @@ export default function BasicTextFields() {
             </Button>
           </Box>
         ) : (
-          <Box sx={{ display: 'flex' }}>
-      <CircularProgress />
-    </Box>
+          // Si no hay items, muestra el CircularProgress
+          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+            <CircularProgress />
+          </Box>
         )}
       </Box>
     </Box>
   );
+
+
+
 }
