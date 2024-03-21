@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import DataContext from "./DataContext";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 const DataProvider = ({ children }) => {
   const [items, setItems] = useState(null);
@@ -57,7 +59,9 @@ const DataProvider = ({ children }) => {
   }, []);
 
   if (loading) {
-    return <div>Cargando datos...</div>;
+    return <Box sx={{ display: 'flex' }}>
+    <CircularProgress />
+  </Box>;
   }
 
   return <DataContext.Provider value={{ items, pass }}>{children}</DataContext.Provider>;

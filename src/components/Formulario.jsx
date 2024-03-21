@@ -94,6 +94,7 @@ import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert"; // Asegúrate de tener @mui/material instalado
 import { obtenerItems, cambiarKm } from "./mondayFunctions";
 import mizton from "../img/mizton.png";
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function BasicTextFields() {
   const [placa, setPlaca] = useState("");
@@ -198,7 +199,9 @@ export default function BasicTextFields() {
             </Button>
           </Box>
         ) : (
-          <h1>Cargando...</h1>
+          <Box sx={{ display: 'flex' }}>
+      <CircularProgress />
+    </Box>
         )}
       </Box>
     </Box>

@@ -9,7 +9,7 @@ export default function FontAwesomeSvgIconDemo({handleSend}) {
   return (
     <Stack direction="row" spacing={2}>
       <IconButton aria-label="Example" onClick={handleSend}>        
-        <SendRoundedIcon color='error' fontSize="large" />
+        <SendRoundedIcon  fontSize="large" />
       </IconButton>
 
     </Stack>

@@ -86,9 +86,9 @@ export default function ServerModal({ setLoging }) {
           <SendButton handleSend={handleSend} />
         </Stack>
 
-        <Typography id="server-modal-description" sx={{ pt: 2 }}>
+        {/* <Typography id="server-modal-description" sx={{ pt: 2 }}>
           If you disable JavaScript, you will still see me.
-        </Typography>
+        </Typography> */}
       </Box>
     </Box>
   );
