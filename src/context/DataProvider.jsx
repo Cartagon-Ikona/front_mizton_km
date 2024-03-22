@@ -9,21 +9,6 @@ const DataProvider = ({ children }) => {
   const [pass, setPass] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const passEnv = process.env.REACT_APP_PASS;
-  console.log("passEnv = ", passEnv);
-  // https://kvmizton.vault.azure.net/secrets/pwd/d62a9c12db4546f081c20d6e270e39ed
-
-  useEffect(() => {
-    const fetchSecret = async () => {
-      const response = await fetch('https://kvmizton.vault.azure.net/secrets/pwd/d62a9c12db4546f081c20d6e270e39ed');
-      const data = await response.json();
-      console.log('Secreto obtenido:', data);
-      // Maneja el secreto como necesites
-    };
-  
-    fetchSecret();
-  }, []);
-
   const url = "https://getmiztondata.azurewebsites.net/api/getMondayData";
 
   const fetchData = async () => {
@@ -33,24 +18,24 @@ const DataProvider = ({ children }) => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          get_items: "get_items",
+          'function': "get_items",
         }),
       }),
-      fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          get_pass: "get_pass",
-        }),
-      }),
+      // fetch(url, {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({
+      //     get_pass: "get_pass",
+      //   }),
+      // }),
     ];
 
     try {
       // Espera a que ambas promesas se resuelvan
       const responses = await Promise.all(fetchPromises);
       console.log("responses = ", responses);
-      console.log("responses[0] = ", responses[0]);
-      console.log("responses[1] = ", responses[1]);
+      // console.log("responses[0] = ", responses[0]);
+      // console.log("responses[1] = ", responses[1]);
 
       // Verifica si alguna de las respuestas no fue exitosa
       if (!responses[0].ok || !responses[1].ok)
@@ -113,7 +98,7 @@ const DataProvider = ({ children }) => {
   }
 
   return (
-    <DataContext.Provider value={{ items, passEnv }}>
+    <DataContext.Provider value={{ items, pass }}>
       {children}
     </DataContext.Provider>
   );

@@ -19,9 +19,46 @@ export default function ServerModal({ setLoging }) {
     console.log("password introdcida", event.target.value);
   };
 
+
+  const getPass = async (pass) => {
+    const url = "https://getmiztondata.azurewebsites.net/api/getMondayData";
+  
+    const datos = {
+      get_pass: "get_pass",
+      passIn : pass
+    };
+    console.log("query", datos);
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(datos),
+      });
+  
+      if (!response.ok) throw new Error("La petición falló");
+      const data = await response.json();
+      console.log("Respuesta:", data); // Mejor práctica es loguear la respuesta completa para depuración
+      return data;
+    } catch (error) {
+      console.error("Error en la petición:", error);
+      return null; // Devuelve un arreglo vacío en caso de error
+    }
+  };
+
+
+
+
+
+
+
+
+
   const handleSend = async () => {
+    const response = await getPass(InputPassword);
+    console.log("respuesta de getPass", response);
     console.log("entro en handleSend en logging al pulsar el boton");
     console.log("password esperada", context.passEnv);
+    
 
     if (InputPassword === context.passEnv) {
       console.log("entro en if");

@@ -25,6 +25,9 @@ export const obtenerItems = async () => {
 export const cambiarKm = async (itemId, value) => {
   const url = "https://getmiztondata.azurewebsites.net/api/getMondayData";
   const datos = {
+    'function': 'change_column_value',
+    'item_id': itemId,
+    'value': value,
     monday_request: `mutation {change_column_value(board_id: 6097786561, item_id: ${itemId}, column_id: "numbers", value: "${value}") {id }}`,
   };
   console.log("query", datos);
@@ -45,11 +48,12 @@ export const cambiarKm = async (itemId, value) => {
   }
 };
 
-export const getPass = async () => {
+export const getPass = async (pass) => {
   const url = "https://getmiztondata.azurewebsites.net/api/getMondayData";
 
   const datos = {
-    get_pass: "get_pass",
+    'function': "get_pass",
+    'passIn' : pass
   };
   console.log("query", datos);
   try {
