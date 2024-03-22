@@ -9,7 +9,7 @@ const DataProvider = ({ children }) => {
   const [pass, setPass] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const passEnv = process.env.pass;
+  const passEnv = process.env.REACT_APP_PASS;
   console.log("passEnv = ", passEnv);
 
   const url = "https://getmiztondata.azurewebsites.net/api/getMondayData";
