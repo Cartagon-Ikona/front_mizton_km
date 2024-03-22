@@ -11,6 +11,18 @@ const DataProvider = ({ children }) => {
 
   const passEnv = process.env.REACT_APP_PASS;
   console.log("passEnv = ", passEnv);
+  // https://kvmizton.vault.azure.net/secrets/pwd/d62a9c12db4546f081c20d6e270e39ed
+
+  useEffect(() => {
+    const fetchSecret = async () => {
+      const response = await fetch('https://kvmizton.vault.azure.net/secrets/pwd/d62a9c12db4546f081c20d6e270e39ed');
+      const data = await response.json();
+      console.log('Secreto obtenido:', data);
+      // Maneja el secreto como necesites
+    };
+  
+    fetchSecret();
+  }, []);
 
   const url = "https://getmiztondata.azurewebsites.net/api/getMondayData";
 
