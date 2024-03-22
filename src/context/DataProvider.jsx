@@ -12,47 +12,27 @@ const DataProvider = ({ children }) => {
   const url = "https://getmiztondata.azurewebsites.net/api/getMondayData";
 
   const fetchData = async () => {
-    // Combina ambos fetch en un array de promesas
-    const fetchPromises = [
-      fetch(url, {
+    try {
+      const response = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           'function': "get_items",
         }),
-      }),
-      // fetch(url, {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify({
-      //     get_pass: "get_pass",
-      //   }),
-      // }),
-    ];
-
-    try {
-      // Espera a que ambas promesas se resuelvan
-      const responses = await Promise.all(fetchPromises);
-      console.log("responses = ", responses);
-      // console.log("responses[0] = ", responses[0]);
-      // console.log("responses[1] = ", responses[1]);
-
-      // Verifica si alguna de las respuestas no fue exitosa
-      if (!responses[0].ok || !responses[1].ok)
+      });
+  
+      console.log("response = ", response);
+  
+      if (!response.ok)
         throw new Error("La petición falló");
-
-      // Extrae los datos JSON de las respuestas
-      const itemsData = await responses[0].json();
+  
+      // Extrae los datos JSON de la respuesta
+      const itemsData = await response.json();
       console.log("itemsData = ", itemsData);
-      const passData = await responses[1].json();
-      console.log("passData = ", passData);
-
-      // Actualiza los estados con los datos obtenidos
-      console.log("itemsData.data.boards[0].items_page.items", itemsData);
+  
+      // Actualiza el estado con los datos obtenidos
       setItems(itemsData);
-      console.log("passData", passData["pasword"]);
-      setPass(passData["pasword"]); // Asegúrate de que la clave aquí coincide con la estructura de tu objeto JSON
-
+  
       // Finalmente, establece loading en false
       setLoading(false);
     } catch (error) {
@@ -60,7 +40,7 @@ const DataProvider = ({ children }) => {
       setLoading(false); // También establece loading en false en caso de error para evitar un estado de carga infinito
     }
   };
-
+  
   useEffect(() => {
     fetchData();
   }, []);

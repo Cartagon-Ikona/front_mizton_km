@@ -24,8 +24,8 @@ export default function ServerModal({ setLoging }) {
     const url = "https://getmiztondata.azurewebsites.net/api/getMondayData";
   
     const datos = {
-      get_pass: "get_pass",
-      passIn : pass
+      'function': "get_pass",
+      'passIn' : pass
     };
     console.log("query", datos);
     try {
