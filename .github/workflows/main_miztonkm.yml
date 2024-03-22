@@ -20,6 +20,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "20.x"
+      - name: Create .env file
+        run: |
+          echo "REACT_APP_PASS=${{ secrets.REACT_APP_PASS }}" > .env
+          # Añade aquí más variables de entorno si es necesario, por ejemplo:
+          # echo "REACT_APP_ANOTHER_SECRET=${{ secrets.REACT_APP_ANOTHER_SECRET }}" >> .env
 
       - name: npm install, build, and test
         run: |
