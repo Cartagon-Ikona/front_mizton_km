@@ -113,7 +113,7 @@ const DataProvider = ({ children }) => {
   }
 
   return (
-    <DataContext.Provider value={{ items, pass }}>
+    <DataContext.Provider value={{ items, passEnv }}>
       {children}
     </DataContext.Provider>
   );

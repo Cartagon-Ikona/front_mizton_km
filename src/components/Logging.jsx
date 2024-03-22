@@ -21,15 +21,15 @@ export default function ServerModal({ setLoging }) {
 
   const handleSend = async () => {
     console.log("entro en handleSend en logging al pulsar el boton");
-    console.log("password esperada", context.pass);
+    console.log("password esperada", context.passEnv);
 
-    if (InputPassword === context.pass) {
+    if (InputPassword === context.passEnv) {
       console.log("entro en if");
       setErrorPass(false);
       setLoging(true);
       setInputPassword("");
     } else {
-      console.log("entro en else");
+      console.log("entro en else las contraseñas no coinciden");
       setErrorPass(true);
       setInputPassword("");
     }
