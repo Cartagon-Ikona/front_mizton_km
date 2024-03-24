@@ -6,10 +6,10 @@ import PassText from "./PassText";
 import { Stack } from "@mui/material";
 import SendButton from "./SendButton";
 import PasstextError from "./PasstextError";
-import DataContext from "../context/DataContext";
+// import DataContext from "../context/DataContext";
 
 export default function ServerModal({ setLoging }) {
-  const context = React.useContext(DataContext);
+  // const context = React.useContext(DataContext);
 
   const [InputPassword, setInputPassword] = React.useState("");
   const [errorPass, setErrorPass] = React.useState();
@@ -57,10 +57,10 @@ export default function ServerModal({ setLoging }) {
     const response = await getPass(InputPassword);
     console.log("respuesta de getPass", response);
     console.log("entro en handleSend en logging al pulsar el boton");
-    console.log("password esperada", context.passEnv);
+    console.log("password esperada", response.value);
     
 
-    if (InputPassword === context.passEnv) {
+    if (response.value === true) {
       console.log("entro en if");
       setErrorPass(false);
       setLoging(true);

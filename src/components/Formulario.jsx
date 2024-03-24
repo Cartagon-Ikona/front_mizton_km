@@ -69,9 +69,9 @@ export default function BasicTextFields() {
       try {
         const cambio = await cambiarKm(itemEncontrado.id, kilometrosNum);
         console.log("cambio = ", cambio);
-
+        console.log("cambio.data = ", cambio.data);
         // Aquí verificas si la respuesta contiene el dato esperado
-        if (cambio["data"] && cambio["data"]["change_column_value"]) {
+        if (cambio.data && cambio.data.change_simple_column_value) {
           console.log("Cambio realizado con éxito");
           setCambioOk(true); // Actualiza el estado para reflejar el éxito del cambio
           setPlaca("");

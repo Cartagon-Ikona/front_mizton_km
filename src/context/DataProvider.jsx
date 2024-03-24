@@ -6,7 +6,7 @@ import mizton from "../img/mizton.png";
 
 const DataProvider = ({ children }) => {
   const [items, setItems] = useState(null);
-  const [pass, setPass] = useState(null);
+  // const [pass, setPass] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const url = "https://getmiztondata.azurewebsites.net/api/getMondayData";
@@ -28,7 +28,14 @@ const DataProvider = ({ children }) => {
   
       // Extrae los datos JSON de la respuesta
       const itemsData = await response.json();
-      console.log("itemsData = ", itemsData);
+    console.log()
+      console.log("itemsData = ", itemsData[0].id);
+
+          // Aquí comprobamos que la respuesta contiene el primer elemento con ID
+    if (!(itemsData && itemsData[0] && itemsData[0].id)) {
+      // Si no existe itemsData[0].id, lanzamos un error
+      throw new Error("El primer elemento no tiene ID o itemsData está vacío");
+    }
   
       // Actualiza el estado con los datos obtenidos
       setItems(itemsData);
@@ -37,7 +44,7 @@ const DataProvider = ({ children }) => {
       setLoading(false);
     } catch (error) {
       console.error("Error en la petición:", error);
-      setLoading(false); // También establece loading en false en caso de error para evitar un estado de carga infinito
+      setLoading(true); // También establece loading en false en caso de error para evitar un estado de carga infinito
     }
   };
   
@@ -78,7 +85,7 @@ const DataProvider = ({ children }) => {
   }
 
   return (
-    <DataContext.Provider value={{ items, pass }}>
+    <DataContext.Provider value={{ items }}>
       {children}
     </DataContext.Provider>
   );
