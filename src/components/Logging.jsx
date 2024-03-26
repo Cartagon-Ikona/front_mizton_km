@@ -25,6 +25,7 @@ export default function ServerModal({ setLoging }) {
   
     const datos = {
       'function': "get_pass",
+      'passIn':pass
         
     };
     console.log("query", datos);
