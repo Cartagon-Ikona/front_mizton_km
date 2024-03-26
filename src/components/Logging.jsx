@@ -25,7 +25,7 @@ export default function ServerModal({ setLoging }) {
   
     const datos = {
       'function': "get_pass",
-      'passIn' : pass
+        
     };
     console.log("query", datos);
     try {
@@ -79,16 +79,24 @@ export default function ServerModal({ setLoging }) {
       alignItems="center"
       minHeight="100vh"
     >
-      <Box
-        sx={{
-          position: "absolute",
-          // width: 400,
-          bgcolor: "background.paper",
-          border: "2px solid #000",
-          boxShadow: (theme) => theme.shadows[5],
-          p: 4,
-        }}
-      >
+        <Box
+    sx={{
+      position: "absolute",
+      bgcolor: "background.paper",
+      border: "2px solid #000",
+      boxShadow: 5, // usa el índice del tema para aplicar sombra
+      p: { xs: 2, sm: 3, md: 4 }, // ajusta el padding según el tamaño de pantalla
+      margin: 'auto', // Centra el Box en la pantalla
+      width: {
+        xs: '95%', // ocupa el 95% del ancho en pantallas extra pequeñas
+        sm: '85%', // ocupa el 85% del ancho en pantallas pequeñas
+        md: '75%', // ocupa el 75% del ancho en pantallas medianas
+        lg: '65%', // ocupa el 65% del ancho en pantallas grandes
+        xl: '55%' // ocupa el 55% del ancho en pantallas extra grandes
+      },
+      maxWidth: "300px", // Asegura que el Box no se expanda más de 600px
+    }}
+  >
         <img
           src={mizton}
           alt="Descripción de la imagen"
