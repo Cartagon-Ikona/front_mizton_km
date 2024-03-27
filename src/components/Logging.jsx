@@ -16,7 +16,7 @@ export default function ServerModal({ setLoging }) {
 
   const handlePwdChange = (event) => {
     setInputPassword(event.target.value);
-    console.log("password introdcida", event.target.value);
+  //  console.log("password introdcida", event.target.value);
   };
 
 
@@ -28,7 +28,7 @@ export default function ServerModal({ setLoging }) {
       'passIn':pass
         
     };
-    console.log("query", datos);
+  //  console.log("query", datos);
     try {
       const response = await fetch(url, {
         method: "POST",
@@ -38,7 +38,7 @@ export default function ServerModal({ setLoging }) {
   
       if (!response.ok) throw new Error("La petición falló");
       const data = await response.json();
-      console.log("Respuesta:", data); // Mejor práctica es loguear la respuesta completa para depuración
+    //  console.log("Respuesta:", data); // Mejor práctica es loguear la respuesta completa para depuración
       return data;
     } catch (error) {
       console.error("Error en la petición:", error);
@@ -56,18 +56,18 @@ export default function ServerModal({ setLoging }) {
 
   const handleSend = async () => {
     const response = await getPass(InputPassword);
-    console.log("respuesta de getPass", response);
-    console.log("entro en handleSend en logging al pulsar el boton");
-    console.log("password esperada", response.value);
+  //  console.log("respuesta de getPass", response);
+   // console.log("entro en handleSend en logging al pulsar el boton");
+    //console.log("password esperada", response.value);
     
 
     if (response.value === true) {
-      console.log("entro en if");
+      //console.log("entro en if");
       setErrorPass(false);
       setLoging(true);
       setInputPassword("");
     } else {
-      console.log("entro en else las contraseñas no coinciden");
+      //console.log("entro en else las contraseñas no coinciden");
       setErrorPass(true);
       setInputPassword("");
     }

@@ -28,9 +28,9 @@ export default function BasicTextFields() {
   };
 
   const procesarDatos = (placa, kilometros) => {
-    console.log(
-      `Procesando datos - Placa: ${placa}, Kilómetros: ${kilometros}`
-    );
+    // console.log(
+    //   `Procesando datos - Placa: ${placa}, Kilómetros: ${kilometros}`
+    // );
     // Aquí puedes agregar la lógica que necesitas ejecutar si la placa está en la lista
   };
 
@@ -47,7 +47,7 @@ export default function BasicTextFields() {
 
     if (itemEncontrado) {
       const kmActual = Number(itemEncontrado.value);
-      console.log("kmActual = ", kmActual);
+      // console.log("kmActual = ", kmActual);
 
       if (kilometrosNum > kmActual + 1000) {
         setError(
@@ -68,24 +68,24 @@ export default function BasicTextFields() {
 
       try {
         const cambio = await cambiarKm(itemEncontrado.id, kilometrosNum);
-        console.log("cambio = ", cambio);
+       // console.log("cambio = ", cambio);
         console.log("cambio.data = ", cambio.data);
         // Aquí verificas si la respuesta contiene el dato esperado
         if (cambio.data && cambio.data.change_simple_column_value) {
-          console.log("Cambio realizado con éxito");
+     //     console.log("Cambio realizado con éxito");
           setCambioOk(true); // Actualiza el estado para reflejar el éxito del cambio
           setPlaca("");
           setKilometros("");
         } else {
           // Si no existe 'change_column_value' en la respuesta, maneja como un error
-          console.error("Fallo en el cambio.");
+   //       console.error("Fallo en el cambio.");
           setError("Hubo un fallo en el cambio de kilómetros.");
           setCambioOk(false); // Opcional, dependiendo de si quieres manejar este estado en caso de error
           setPlaca("");
           setKilometros("");
         }
       } catch (error) {
-        console.error("Error al cambiar los km:", error);
+     //   console.error("Error al cambiar los km:", error);
         setError("Hubo un error al procesar el cambio de kilómetros.");
         setCambioOk(false); // Actualiza el estado para reflejar el fallo en el cambio
         setPlaca("");
