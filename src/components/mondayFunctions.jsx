@@ -18,7 +18,7 @@ export const obtenerItems = async () => {
     return data.data.boards[0].items_page.items; // Devuelve el array completo de ítems
   } catch (error) {
     console.error("Error en la petición:", error);
-    return [];  Devuelve un arreglo vacío en caso de error
+    return [];  //Devuelve un arreglo vacío en caso de error
   }
 };
 
