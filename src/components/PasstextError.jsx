@@ -7,8 +7,8 @@ export default function ValidationTextFields({ password, onPasswordChange,handle
   const handleSubmit = (event) => {
     event.preventDefault();
     
-    //console.log("handlsubmit")
-    handleSend()
+    console.log("handlsubmit");
+    handleSend();
   };
 
   return (
