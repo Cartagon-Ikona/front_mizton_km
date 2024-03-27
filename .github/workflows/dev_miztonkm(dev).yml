@@ -59,14 +59,14 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     
     steps:
-      - name: Download artifact from build job
+      - name: Download build directory from build job
         uses: actions/download-artifact@v3
         with:
           name: node-app
           path: ./build
 
-      - name: Unzip artifact for deployment
-        run: unzip release.zip
+      # - name: Unzip artifact for deployment
+      #   run: unzip release.zip
       
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
