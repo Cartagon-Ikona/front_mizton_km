@@ -7,7 +7,7 @@ export default function FormPropsTextFields({ password, onPasswordChange, handle
   const handleSubmit = (event) => {
     event.preventDefault();
     
-   log console.log("handlsubmit")
+    console.log("handlsubmit")
     handleSend()
   };
 
