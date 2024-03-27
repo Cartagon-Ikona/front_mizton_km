@@ -9,8 +9,8 @@ const DataProvider = ({ children }) => {
   // const [pass, setPass] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const url = "https://getmiztondata.azurewebsites.net/api/getMondayData";
-
+  const url = "https://getmiztondata-dev.azurewebsites.net/api/getMondayData?";
+  
   const fetchData = async () => {
     try {
       const response = await fetch(url, {
@@ -21,15 +21,15 @@ const DataProvider = ({ children }) => {
         }),
       });
   
-     // console.log("response = ", response);
+      console.log("response = ", response);
   
       if (!response.ok)
         throw new Error("La petición falló");
   
       // Extrae los datos JSON de la respuesta
       const itemsData = await response.json();
-    //console.log()
-    //  console.log("itemsData = ", itemsData[0].id);
+    console.log()
+      console.log("itemsData = ", itemsData[0].id);
 
           // Aquí comprobamos que la respuesta contiene el primer elemento con ID
     if (!(itemsData && itemsData[0] && itemsData[0].id)) {
