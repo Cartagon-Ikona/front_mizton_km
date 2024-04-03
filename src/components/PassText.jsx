@@ -29,7 +29,7 @@ export default function FormPropsTextFields({ password, onPasswordChange, handle
         <TextField
           id="filled-password-input"
           label="Contraseña"
-          type="Contraseña"
+          type="password"
           autoComplete="current-password"
           variant="filled"
           value={password} // Establece el valor utilizando las props
