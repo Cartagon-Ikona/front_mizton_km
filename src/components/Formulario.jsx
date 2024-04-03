@@ -123,7 +123,7 @@ export default function BasicTextFields() {
         {cambioOk === true ? (
           // Si cambioOk es true, muestra un texto de éxito
           <Typography variant="h5" component="h2" sx={{ mt: 2 }}>
-            Cambio realizado con éxito.
+            Reporte enviado con éxito
           </Typography>
         ) : items.length > 0 ? (
           // Si cambioOk es false o null y hay items, muestra el formulario
