@@ -129,6 +129,7 @@ export default function BasicTextFields() {
           style={{ maxWidth: "100%", height: "auto" }}
         />
         {cambioOk === false && error && <Alert severity="error">{error}</Alert>}
+        <p></p>
         {cambioOk === true ? (
           // Si cambioOk es true, muestra un texto de éxito
           <Typography variant="h5" component="h2" sx={{ mt: 2 }}>
