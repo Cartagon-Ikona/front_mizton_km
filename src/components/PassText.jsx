@@ -28,8 +28,8 @@ export default function FormPropsTextFields({ password, onPasswordChange, handle
       <div>
         <TextField
           id="filled-password-input"
-          label="Password"
-          type="password"
+          label="Contraseña"
+          type="Contraseña"
           autoComplete="current-password"
           variant="filled"
           value={password} // Establece el valor utilizando las props

@@ -7,8 +7,8 @@ export default function ValidationTextFields({ password, onPasswordChange,handle
   const handleSubmit = (event) => {
     event.preventDefault();
     
-    console.log("handlsubmit")
-    handleSend()
+    console.log("handlsubmit");
+    handleSend();
   };
 
   return (
@@ -24,8 +24,8 @@ export default function ValidationTextFields({ password, onPasswordChange,handle
       <div>
         <TextField
           error
-          label="Password"
-          type="password"
+          label="Contraseña"
+          type="Contraseña"
           autoComplete="current-password"
           variant="filled"
           value={password} // Establece el valor utilizando las props

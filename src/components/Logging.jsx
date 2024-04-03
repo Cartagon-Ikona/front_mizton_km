@@ -21,7 +21,7 @@ export default function ServerModal({ setLoging }) {
 
 
   const getPass = async (pass) => {
-    const url = "https://getmiztondata.azurewebsites.net/api/getMondayData";
+    const url = "https://getmiztondata-dev.azurewebsites.net/api/getMondayData?";
   
     const datos = {
       'function': "get_pass",
@@ -56,8 +56,8 @@ export default function ServerModal({ setLoging }) {
 
   const handleSend = async () => {
     const response = await getPass(InputPassword);
-    console.log("respuesta de getPass", response);
-    console.log("entro en handleSend en logging al pulsar el boton");
+   console.log("respuesta de getPass", response);
+   console.log("entro en handleSend en logging al pulsar el boton");
     console.log("password esperada", response.value);
     
 
@@ -104,7 +104,7 @@ export default function ServerModal({ setLoging }) {
           style={{ maxWidth: "100%", height: "auto" }}
         />
         <Typography id="server-modal-title" variant="h6" component="h2">
-          LOG IN
+        Acceso
         </Typography>
         <Stack direction="row" spacing={2}>
           {errorPass ? (
