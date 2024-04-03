@@ -25,7 +25,7 @@ export default function ValidationTextFields({ password, onPasswordChange,handle
         <TextField
           error
           label="Contraseña"
-          type="Contraseña"
+          type="password"
           autoComplete="current-password"
           variant="filled"
           value={password} // Establece el valor utilizando las props
