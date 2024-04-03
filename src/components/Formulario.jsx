@@ -147,8 +147,19 @@ export default function BasicTextFields() {
               variant="outlined"
               value={placa}
               onChange={handlePlacaChange}
+              sx={{
+                width: {
+                  xs: '100%', // 100% del ancho en pantallas extra pequeñas
+                  sm: '75%',  // 75% del ancho en pantallas pequeñas
+                  md: '50%',  // 50% del ancho en pantallas medianas
+                }
+              }}
             />
-            <Typography variant="caption" component="h2" sx={{ mt: 0 }}>
+            <Typography variant="caption" component="h2" sx={{ mt: 0, fontSize: {
+  xs: '0.7rem',  // tamaño más pequeño en pantallas extra pequeñas
+  sm: '0.8rem',  // tamaño pequeño en pantallas pequeñas
+  md: '0.9rem',  // tamaño mediano en pantallas medianas
+}}}>
             últimos 6 dígitos
             </Typography>
             <TextField
@@ -157,9 +168,28 @@ export default function BasicTextFields() {
               variant="outlined"
               value={kilometros}
               onChange={handleKilometrosChange}
-              sx={{ mt: 2 }}
+              sx={{
+                mt: 2,
+                width: {
+                  xs: '100%', // 100% del ancho en pantallas extra pequeñas
+                  sm: '75%',  // 75% del ancho en pantallas pequeñas
+                  md: '50%',  // 50% del ancho en pantallas medianas
+                }
+              }}
             />
-            <Button type="submit" variant="contained" sx={{ mt: 2 }}>
+            <Button type="submit" variant="contained" sx={{
+  mt: 2,
+  fontSize: {
+    xs: '0.7rem',  // tamaño de fuente más pequeño en pantallas extra pequeñas
+    sm: '0.8rem',  // tamaño de fuente pequeño en pantallas pequeñas
+    md: '0.9rem',  // tamaño de fuente mediano en pantallas medianas
+  },
+  padding: {
+    xs: '6px 12px',  // padding más pequeño en pantallas extra pequeñas
+    sm: '8px 16px',  // padding pequeño en pantallas pequeñas
+    md: '10px 20px',  // padding mediano en pantallas medianas
+  },
+}}>
               Enviar
             </Button>
           </Box>
