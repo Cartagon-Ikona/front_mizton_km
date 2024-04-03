@@ -49,9 +49,9 @@ export default function BasicTextFields() {
       const kmActual = Number(itemEncontrado.value);
        console.log("kmActual = ", kmActual);
 
-      if (kilometrosNum > kmActual + 1000) {
+      if (kilometrosNum > kmActual + 1500) {
         setError(
-          "Los kilómetros introducidos no pueden superar en 1000 a los actuales."
+          "Los kilómetros introducidos rebasan el límite diario"
         );
         return;
       }
@@ -72,7 +72,7 @@ export default function BasicTextFields() {
         console.log("cambio.data = ", cambio.data);
         // Aquí verificas si la respuesta contiene el dato esperado
         if (cambio.data && cambio.data.change_simple_column_value) {
-          console.log("Cambio realizado con éxito");
+          console.log("Reporte enviado con éxito");
           setCambioOk(true); // Actualiza el estado para reflejar el éxito del cambio
           setPlaca("");
           setKilometros("");
@@ -92,7 +92,7 @@ export default function BasicTextFields() {
         setKilometros("");
       }
     } else {
-      setError("La placa introducida no está en la lista de ítems.");
+      setError("El número de serie es incorrecto");
       setPlaca("");
       setKilometros("");
     }
@@ -135,26 +135,30 @@ export default function BasicTextFields() {
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              "& > :not(style)": { m: 1, width: "25ch" },
+              "& > :not(style)": {  width: "25ch" },
             }}
             noValidate
             autoComplete="off"
           >
             <TextField
               id="placa"
-              label="Placa"
+              label="Número de serie"
               variant="outlined"
               value={placa}
               onChange={handlePlacaChange}
             />
+            <Typography variant="caption" component="h2" sx={{ mt: 0 }}>
+            últimos 6 dígitos
+            </Typography>
             <TextField
               id="km"
-              label="Kilómetros"
+              label="Kilometraje actual"
               variant="outlined"
               value={kilometros}
               onChange={handleKilometrosChange}
+              sx={{ mt: 2 }}
             />
-            <Button type="submit" variant="contained">
+            <Button type="submit" variant="contained" sx={{ mt: 2 }}>
               Enviar
             </Button>
           </Box>

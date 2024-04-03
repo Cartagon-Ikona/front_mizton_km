@@ -104,7 +104,7 @@ export default function ServerModal({ setLoging }) {
           style={{ maxWidth: "100%", height: "auto" }}
         />
         <Typography id="server-modal-title" variant="h6" component="h2">
-          LOG IN
+        Acceso
         </Typography>
         <Stack direction="row" spacing={2}>
           {errorPass ? (
