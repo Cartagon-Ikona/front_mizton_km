@@ -73,6 +73,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'miztonkm'
-          slot-name: 'miztonkm-dev'
+          slot-name: 'dev'
           package: ./build
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B40AF35486324F76AA85DCF046893C2E }}
