@@ -21,12 +21,13 @@ const DataProvider = ({ children }) => {
         }),
       });
   // test respuesta function 2
-      console.log("response = ", response);
+      console.log("response.text = ", response.text());
   
       if (!response.ok)
         throw new Error("La petición falló");
   
       // Extrae los datos JSON de la respuesta
+      console.log()
       const itemsData = await response.json();
   
       console.log("itemsData = ", itemsData);
