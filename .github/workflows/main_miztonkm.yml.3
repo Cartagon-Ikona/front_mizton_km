@@ -24,18 +24,17 @@ jobs:
       - name: npm install, build, and test
         run: |
           npm install
-          #npm run build --if-present
-          CI=false npm run build --if-present
-          #npm run test --if-present
+          npm run build --if-present
+          npm run test --if-present
 
-      #- name: Zip artifact for deployment
-       # run: zip release.zip ./* -r
+      - name: Zip artifact for deployment
+        run: zip release.zip ./* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: node-app
-          path: ./build/**
+          path: release.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -49,17 +48,15 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: node-app
-          path: ./build
 
-      #- name: Unzip artifact for deployment
-       # run: unzip release.zip
+      - name: Unzip artifact for deployment
+        run: unzip release.zip
       
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'miztonkm'
+          app-name: 'miztonKm'
           slot-name: 'Production'
-          package: ./build
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_ADD723D184DC4BD78EB6C28D865DDC9F }}
-          #publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1EC7A1B47F594E86AB38BCEB3C9A55E7 }}
+          package: .
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5EAB35D13E8A48939951C52EB8412506 }}
