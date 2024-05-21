@@ -89,11 +89,17 @@ jobs:
           npm install
           CI=false npm run build --if-present
 
+      - name: Prepare artifact for deployment
+        run: |
+          mkdir -p deploy
+          cp -r build/* deploy/
+          cp package*.json deploy/
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: node-app
-          path: ./build/**
+          path: deploy/
 
   deploy:
     runs-on: ubuntu-latest
@@ -107,15 +113,17 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: node-app
-          path: ./build
+          path: ./deploy
 
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
-      
+
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd deploy
+          npm install
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
@@ -123,5 +131,5 @@ jobs:
         with:
           app-name: 'miztonkm'
           slot-name: 'Production'
-          package: ./build
+          package: ./deploy
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5EAB35D13E8A48939951C52EB8412506 }}
