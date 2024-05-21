@@ -20,7 +20,7 @@ const DataProvider = ({ children }) => {
           'function': "get_items",
         }),
       });
-  
+  // test respuesta function
       console.log("response = ", response);
   
       if (!response.ok)
