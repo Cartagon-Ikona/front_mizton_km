@@ -21,7 +21,7 @@ const DataProvider = ({ children }) => {
         }),
       });
   
-      // console.log("response = ", response);
+      console.log("response = ", response);
   
       if (!response.ok)
         throw new Error("La petición falló");
@@ -29,7 +29,7 @@ const DataProvider = ({ children }) => {
       // Extrae los datos JSON de la respuesta
       const itemsData = await response.json();
   
-      // console.log("itemsData = ", itemsData[0].id);
+      console.log("itemsData = ", itemsData);
 
           // Aquí comprobamos que la respuesta contiene el primer elemento con ID
     if (!(itemsData && itemsData[0] && itemsData[0].id)) {
