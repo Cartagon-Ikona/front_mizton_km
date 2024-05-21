@@ -207,7 +207,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'miztonkm'
+          app-name: 'miztonKm'
           slot-name: 'Production'
           package: ./build
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5EAB35D13E8A48939951C52EB8412506 }}
