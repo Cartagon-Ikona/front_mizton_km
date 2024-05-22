@@ -1,5 +1,5 @@
 export const obtenerItems = async () => {
-  const url = "https://getmiztondata-dev.azurewebsites.net/api/getMondayData?";
+  const url = "https://getmiztondata.azurewebsites.net/api/getMondayData?";
   const datos = {
     monday_request:
       "query{boards(ids: 6097786561) {items_page(limit: 25){cursor items{id name} }}}",
@@ -23,7 +23,7 @@ export const obtenerItems = async () => {
 };
 
 export const cambiarKm = async (itemId, value) => {
-  const url = "https://getmiztondata-dev.azurewebsites.net/api/getMondayData?";
+  const url = "https://getmiztondata.azurewebsites.net/api/getMondayData?";
   const datos = {
     'function': 'change_column_value',
     'item_id': itemId,
@@ -49,7 +49,7 @@ export const cambiarKm = async (itemId, value) => {
 };
 
 export const getPass = async (pass) => {
-  const url = "https://getmiztondata-dev.azurewebsites.net/api/getMondayData?";
+  const url = "https://getmiztondata.azurewebsites.net/api/getMondayData?";
 
   const datos = {
     'function': "get_pass",
