@@ -10,6 +10,7 @@ const DataProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const url = "https://getmiztondata.azurewebsites.net/api/getMondayData?";
+  // Pasan cosas mu raras
   
   const fetchData = async () => {
     try {
@@ -21,7 +22,7 @@ const DataProvider = ({ children }) => {
         }),
       });
   
-      console.log("response rama dev= ", response);
+      console.log("response rama dev2= ", response);
   
       if (!response.ok)
         throw new Error("La petición falló");
