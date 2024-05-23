@@ -9,7 +9,7 @@ const DataProvider = ({ children }) => {
   // const [pass, setPass] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const url = "https://getmiztondata.azurewebsites.net/api/getMondayData?";
+  const url = "https://miztonkmv2.azurewebsites.net/api/Function_miztonKmV2?";
   // Pasan cosas mu raras
   
   const fetchData = async () => {

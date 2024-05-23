@@ -21,7 +21,7 @@ export default function ServerModal({ setLoging }) {
 
 
   const getPass = async (pass) => {
-    const url = "https://getmiztondata.azurewebsites.net/api/getMondayData?";
+    const url = "https://miztonkmv2.azurewebsites.net/api/Function_miztonKmV2?";
   
     const datos = {
       'function': "get_pass",
