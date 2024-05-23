@@ -14,7 +14,7 @@ export const obtenerItems = async () => {
 
     if (!response.ok) throw new Error("La petición falló");
     const data = await response.json();
-    console.log("items", data.data.boards[0].items_page.items);
+    // console.log("items", data.data.boards[0].items_page.items);
     return data.data.boards[0].items_page.items; // Devuelve el array completo de ítems
   } catch (error) {
     console.error("Error en la petición:", error);
@@ -30,7 +30,7 @@ export const cambiarKm = async (itemId, value) => {
     'value': value,
     monday_request: `mutation {change_column_value(board_id: 6097786561, item_id: ${itemId}, column_id: "numbers", value: "${value}") {id }}`,
   };
-  console.log("query", datos);
+  // console.log("query", datos);
   try {
     const response = await fetch(url, {
       method: "POST",
@@ -40,7 +40,7 @@ export const cambiarKm = async (itemId, value) => {
 
     if (!response.ok) throw new Error("La petición falló");
     const data = await response.json();
-    console.log("Respuesta:", data); // Mejor práctica es loguear la respuesta completa para depuración
+    // console.log("Respuesta:", data); // Mejor práctica es loguear la respuesta completa para depuración
     return data;
   } catch (error) {
     console.error("Error en la petición:", error);
@@ -55,7 +55,7 @@ export const getPass = async (pass) => {
     'function': "get_pass",
     'passIn' : pass
   };
-  console.log("query", datos);
+  // console.log("query", datos);
   try {
     const response = await fetch(url, {
       method: "POST",
@@ -65,10 +65,10 @@ export const getPass = async (pass) => {
 
     if (!response.ok) throw new Error("La petición falló");
     const data = await response.json();
-    console.log("Respuesta:", data); // Mejor práctica es loguear la respuesta completa para depuración
+    // console.log("Respuesta:", data); // Mejor práctica es loguear la respuesta completa para depuración
     return data;
   } catch (error) {
-    console.error("Error en la petición:", error);
+    // console.error("Error en la petición:", error);
     return null; // Devuelve un arreglo vacío en caso de error
   }
 };

@@ -47,7 +47,7 @@ export default function BasicTextFields() {
 
     if (itemEncontrado) {
       const kmActual = Number(itemEncontrado.value);
-       console.log("kmActual = ", kmActual);
+      //  console.log("kmActual = ", kmActual);
 
       if (kilometrosNum > kmActual + 1500) {
         setError(
@@ -68,8 +68,8 @@ export default function BasicTextFields() {
 
       try {
         const cambio = await cambiarKm(itemEncontrado.id, kilometrosNum);
-        console.log("cambio = ", cambio);
-        console.log("cambio.data = ", cambio.data);
+        // console.log("cambio = ", cambio);
+        // console.log("cambio.data = ", cambio.data);
         // Aquí verificas si la respuesta contiene el dato esperado
         if (cambio.data && cambio.data.change_simple_column_value) {
           console.log("Reporte enviado con éxito");

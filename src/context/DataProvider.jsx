@@ -22,15 +22,14 @@ const DataProvider = ({ children }) => {
         }),
       });
   
-      console.log("response rama dev2= ", response);
+      // console.log("response= ", response);
   
       if (!response.ok)
         throw new Error("La petición falló");
   
       // Extrae los datos JSON de la respuesta
       const itemsData = await response.json();
-    console.log()
-      console.log("itemsData rama dev= ", itemsData[0].id);
+      // console.log("itemsData rama dev= ", itemsData[0].id);
 
           // Aquí comprobamos que la respuesta contiene el primer elemento con ID
     if (!(itemsData && itemsData[0] && itemsData[0].id)) {

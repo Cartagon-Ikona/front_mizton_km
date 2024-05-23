@@ -11,7 +11,7 @@ import DataProvider from "./context/DataProvider";
 function App() {
   const [login, setLoging] = useState(false);
 
-  console.log("estado de logging en app", login);
+  // console.log("estado de logging en app", login);
 
   return (
     <DataProvider>
