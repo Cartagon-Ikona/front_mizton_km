@@ -47,7 +47,7 @@ export default function BasicTextFields() {
 
     if (itemEncontrado) {
       const kmActual = Number(itemEncontrado.value);
-      //  console.log("kmActual = ", kmActual);
+       console.log("kmActual = ", kmActual);
 
       if (kilometrosNum > kmActual + 1500) {
         setError(

@@ -14,7 +14,7 @@ export const obtenerItems = async () => {
 
     if (!response.ok) throw new Error("La petición falló");
     const data = await response.json();
-    // console.log("items", data.data.boards[0].items_page.items);
+    console.log("items", data.data.boards[0].items_page.items);
     return data.data.boards[0].items_page.items; // Devuelve el array completo de ítems
   } catch (error) {
     console.error("Error en la petición:", error);
