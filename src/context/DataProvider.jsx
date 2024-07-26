@@ -29,7 +29,7 @@ const DataProvider = ({ children }) => {
   
       // Extrae los datos JSON de la respuesta
       const itemsData = await response.json();
-      // console.log("itemsData rama dev= ", itemsData[0].id);
+      console.log("itemsData rama dev= ", itemsData);
 
           // Aquí comprobamos que la respuesta contiene el primer elemento con ID
     if (!(itemsData && itemsData[0] && itemsData[0].id)) {
