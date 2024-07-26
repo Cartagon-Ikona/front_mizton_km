@@ -38,7 +38,7 @@ export default function ServerModal({ setLoging }) {
   
       if (!response.ok) throw new Error("La petición falló");
       const data = await response.json();
-      // console.log("Respuesta:", data); // Mejor práctica es loguear la respuesta completa para depuración
+      console.log("Respuesta getPass:", data); // Mejor práctica es loguear la respuesta completa para depuración
       return data;
     } catch (error) {
       console.error("Error en la petición:", error);
